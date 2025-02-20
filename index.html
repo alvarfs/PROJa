@@ -4,25 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Descubre España</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Descubre España</h1>
-    <form action="">
-        <label>Comunitat: </label><select name="ccaa" id="ccaa">
-            <option value="" disabled selected>Selecciona una opción</option>
-        </select><br><br>
-        <label>Província: </label><select name="provincia" id="provincia">
-            <option value="" disabled selected>Selecciona una opción</option>
-        </select><br><br>
-        <label>Població: </label><select name="poblacion" id="poblacion">
-            <option value="" disabled selected>Selecciona una opción</option>
-        </select><br><br>
-        <input type="submit" value="ENVIAR" id="submit">
-    </form>
-    <div id="image-container"></div>
+    <h1>
+        Descubre España
+        <span class="tooltip tooltip-bottom">📌
+            <span class="tooltip-text">
+                Con la funcion 'Notification.requestPermission()' pedimos permiso al usuario
+                para enviarle notificaciones con Notifications API.
+            </span>
+        </span> 
+    </h1>
+    <div class="box container">
+        <form action="">
+            <label>Comunitat: </label><select name="ccaa" id="ccaa">
+                <option value="" disabled selected>Selecciona una opción</option>
+            </select><br><br>
+            <label>Província: </label><select name="provincia" id="provincia">
+                <option value="" disabled selected>Selecciona una opción</option>
+            </select><br><br>
+            <label>
+                Població: 
+                <span class="tooltip">📌
+                    <span class="tooltip-text">
+                        Al realizar una búsqueda, guardamos la población
+                        que el usuario ha seleccionado con 'localStorage.setItem'.<br><br>
+                        Redirigimos al usuario a search.html con window.location.href
+                    </span>
+                </span> 
+            </label>
+            <select name="poblacion" id="poblacion">
+                <option value="" disabled selected>Selecciona una opción</option>
+            </select><br><br>
+            
+            <input type="submit" value="ENVIAR" id="submit"> 
+        </form>
+    </div>
 </body>
 <script src="script.js"></script>
 

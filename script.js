@@ -16,8 +16,10 @@ window.onload = function () {
     });
     submit.addEventListener("click", (event) => {
         event.preventDefault();
-        searchImages(poblaciones, poblaciones.selectedIndex);
+        searchPoblacion(poblaciones, poblaciones.selectedIndex);
     });
+
+    Notification.requestPermission();
 };
 
 async function loadCombo(combo, jsonFile, parentCode = 0) {
@@ -37,40 +39,6 @@ async function loadCombo(combo, jsonFile, parentCode = 0) {
     });
 };
 
-async function searchImages(combo, index) {
-    const galeria = document.getElementById("image-container");
-    let poblacion = combo.options[index].innerHTML;
-    const url = "https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=images&titles="+ poblacion +"&gimlimit=10&prop=imageinfo&iiprop=url";
-
-    galeria.innerHTML = "";
-    let response = await fetch(url);
-    let result = await response.json();
-    
-    if (!result.query) {
-        const p = document.createElement("p");
-        p.innerHTML = "No se ha encontrado ninguna imagen de esta localidad...";
-
-        galeria.append(p);
-        return;
-    }
-
-    insertImages(result, galeria)
-
-    console.log(result)
-}
-
-function insertImages(result, galeria) {
-    const images = Object.values(result.query.pages);
-
-    images.forEach(element => {
-        const img = document.createElement("img");
-        img.src = element.imageinfo[0].url;
-        img.width = 369;
-
-        galeria.append(img)
-    });
-}
-
 function resetCombo(combo) {
     combo.innerHTML = "";
 
@@ -80,4 +48,11 @@ function resetCombo(combo) {
     option.selected = true;
 
     combo.append(option);
+}
+
+function searchPoblacion(poblaciones, index){
+    let poblacion = poblaciones.options[index].innerHTML;
+    localStorage.setItem("poblacion", poblacion)
+
+    window.location.href = "search.html";
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descubre España</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="row-container">
+        <h2></h2>
+        <span class="tooltip tooltip-bottom">📌
+            <span class="tooltip-text">
+                Recogemos la población que ha seleccionado el usuario con 'localStorage.getItem'.<br><br>
+                Con la API de OpenWeather, conseguimos todos los datos de este para poder 
+                notificar al usuario de su tiempo y ubicación.
+            </span>
+        </span> 
+    </div>
+    <div class="box container">
+    <div>
+        <div id="image-container" class="box">
+            <iframe
+                width="300"
+                height="300"
+                style="border:0"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <div id="info-container">
+            <div id="temperature"></div>
+            <div id="weather"></div>
+            <span class="tooltip">📌
+                <span class="tooltip-text">
+                    Comprobamos si el usuario ha dado permisos para enviar notificaciones con la función 'Notification.permission=="granted"'.<br><br>
+                    Si es el caso, con el constructor <br>'new Notification'<br> podemos crear una notificacion.<br><br>
+                    Se le puede pasar un titulo y en options, puedes añadirle multiples cosas,
+                    en este caso estamos pasando un 'body' con texto y un 'icon' mostrando el temporal actual.<br><br>
+                    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Notification/Notification" target="_blank">
+                        Más información
+                    </a>
+                </span>
+            </span> 
+        </div>
+    </div>
+    <a href="index.html"><button>VOLVER AL MENU</button></a>
+    </div>
+</body>
+<script src="search.js"></script>
+
+</html>
